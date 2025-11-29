@@ -15,9 +15,13 @@ async def gemini_review(req: MovieRequest):
     movie = req.movie
 
     prompt = f"""
-    You are a Tamil movie reviewer.
+    You are a movie reviewer.
     Give a short, friendly, 5-line review for the Vijay movie "{movie}".
-    Language: simple Tamil + little English.
+    IMPORTANT RULES:
+    - Write only in English.
+    - Do NOT use Tamil words.
+    - Keep the tone simple and casual.
+    - Output exactly 5 short lines.
     """
 
     result = client.models.generate_content(
