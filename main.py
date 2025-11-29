@@ -2,8 +2,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from google import genai
 
-# ENABLE THE CLIENT (DON'T COMMENT THIS)
-client = genai.Client(api_key="AIzaSyC3k9rdwJgQf53UwqJKwFTv_JXaHD8CrFQ")
+# ENABLE THE CLIENT (PUT YOUR REAL KEY HERE)
+client = genai.Client(api_key="YOUR_API_KEY")
 
 app = FastAPI()
 
@@ -16,20 +16,20 @@ async def gemini_review(req: MovieRequest):
 
     prompt = f"""
     You are a professional movie reviewer.
-    
-    Write a clean, simple, 5-line review for the Vijay movie "{movie}".
+
+    Write a clean, simple, 5-line review for the movie "{movie}".
 
     STRICT RULES:
     - Output MUST be 100% English ONLY.
     - NO Tamil words.
     - NO Tanglish.
-    - NO slang like "mass", "semma", "vera level".
+    - NO slang like "mass", "semma", "vera level", etc.
     - NO mixing languages.
     - EXACTLY 5 short lines.
     - Do NOT add greetings or explanations.
     - Only output the 5-line review text.
 
-    If you generate any Tamil word, retry again in English.
+    If you generate any Tamil word, retry again in pure English.
     """
 
     result = client.models.generate_content(
