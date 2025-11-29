@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from google import genai
 
 # USE NEW SAFE KEY HERE
-client = genai.Client(api_key="AIzaSyC3k9rdwJgQf53UwqJKwFTv_JXaHD8CrFQ")
+#client = genai.Client(api_key="AIzaSyC3k9rdwJgQf53UwqJKwFTv_JXaHD8CrFQ")
 
 app = FastAPI()
 
